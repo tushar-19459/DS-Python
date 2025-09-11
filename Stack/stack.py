@@ -1,4 +1,4 @@
-# 1
+# 1 class for 1th question 
 class InfStack:
     def __init__(self):
         self.data = []
@@ -23,11 +23,12 @@ class InfStack:
             return self.data.pop()
 
 
-# 2
+# 2 class for 2th question 
 class simpleFixStack:
     def __init__(self, size):
         self.data = [None]*size
         self.top = 0
+        self.count = 0
 
     def size(self):
         return self.top
@@ -36,6 +37,7 @@ class simpleFixStack:
         if not self.isFull():
             self.data[self.top] = ele
             self.top += 1
+            self.count += 1
         else:
             return None
 
@@ -43,7 +45,7 @@ class simpleFixStack:
         return self.top == len(self.data)
 
     def isEmpty(self):
-        return len(self.data) == 0
+        return self.count == 0
 
     def peek(self):
         return self.data[self.top-1]
@@ -52,6 +54,7 @@ class simpleFixStack:
         if not self.isEmpty():
 
             self.top -= 1
+            self.count -= 1
             data = self.data[self.top]
             self.data[self.top] = None
             return data
@@ -59,7 +62,7 @@ class simpleFixStack:
             return None
 
 
-# 3
+# 3 class for 3th question 
 class StackReverse:
     def __init__(self):
         self.data = []
@@ -94,7 +97,7 @@ class StackReverse:
         return len(self.data) == 0
 
 
-# 4
+# 4 class for 4th question 
 class parentheses:
     def __init__(self):
         self.data = []
@@ -113,16 +116,16 @@ class parentheses:
 
     def checkParentheses(self, data):
         for i in data:
-            if i == '(':
+            if i == '(' or i == '[' or i=='{' or i=='<':
                 self.push(i)
-            elif i == ')':
+            elif i == ')' or i == ']' or i=='}' or i=='>':
                 if not self.isEmpty():
                     self.pop()
 
         return len(self.data) == 0
 
 
-# 5
+# 5 class for 5th question 
 class HtmlTags:
     def __init__(self):
         self.data = []
@@ -141,16 +144,15 @@ class HtmlTags:
 
     def testTag(self, prop):
         for tag in prop:
-            print(self.data)
             if tag[0:2] != "</":
                 self.push(tag)
             else:
                 if not self.isEmpty():
                     self.pop()
         return len(self.data) == 0
-# 6
+    
 
-
+# 6 class for 6th question 
 class Signature:
     def __init__(self):
         self.S = []
@@ -182,7 +184,7 @@ class Signature:
         return self.S
 
 
-# 7
+# 7 class for 7th question 
 class ForwardBack:
     def __init__(self):
         self.data = ['c:Home']
@@ -204,7 +206,7 @@ class ForwardBack:
             return self.data.pop()
 
 
-# 8
+# 8 class for 8th question 
 class HtmlTagsWithAttributes:
     def __init__(self):
         self.data = []

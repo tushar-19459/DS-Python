@@ -5,12 +5,13 @@ htmlFile = open('./index.html', mode='r')
 text = file.read()
 data = text.split(" ")
 
-
 htmlFileAttributes = open('./testing.html', mode='r')
 tags = htmlFile.read()
 Attributes= htmlFileAttributes.read().split('\n')
 Attributes = [item.strip() for item in Attributes ]
 
+
+# 1. Implement unlimited size stack
 def test_InfStack():
     s = InfStack()
     assert s.isEmpty() == True
@@ -36,9 +37,10 @@ def test_InfStack():
 
     assert s.isEmpty() == True
     assert s.size() == 0
-# test_InfStack()
+test_InfStack()
 
 
+#2. Implement limited size Stack
 def test_Fixstack():
     s = simpleFixStack(3)
 
@@ -63,50 +65,50 @@ def test_Fixstack():
 
     assert s.pop() == 10
     assert s.isEmpty() == True
-# test_Fixstack()
+test_Fixstack()
 
 
+# 3. Reverse the content of file using Stack
 def test_rev_stack():
     stack = StackReverse()
     for i in data:
         stack.push(i)
     value = stack.stkRev()
-    rev_text = " ".join(data[::-1])
-    print(text)
-    print(value)
+    rev_text = " ".join(data[::-1]).strip()
     assert value == rev_text
-# test_rev_stack()
+test_rev_stack()
 
 
+# 4. Match the parentheses using Stack
 def testParentheses():
     stack = parentheses()
     chars = list(text)
-    assert stack.checkParentheses(chars) == True
-# testParentheses()
+    assert stack.checkParentheses(chars) == True 
+testParentheses()
 
 
+# 5. Match the tags in HTML file using Stack
+def testHtml():
+    stack = HtmlTags()
+    data = tags.replace('\n', " ").split(" ")
+    data = [item for item in data if item != ""]
+    assert stack.testTag(data) == True #returns true if all the html tags are closed correcty
+testHtml()
+
+
+# 6. Implement a function with signature transfer(S,T). This function transfers all elements from Stack S to Stack T. The sequence of elements in T should be same as that of S.
 def testSignature():
     stack = Signature()
     for i in data:
         stack.push(i)
 
-    print(stack.getS())
+    # print(stack.getS())
     stack.Signature_opertaion()
-    print(stack.getT())
-# testSignature()
+    # print(stack.getT())
+testSignature()
 
 
-def testHtml():
-    stack = HtmlTags()
-    data = tags.replace('\n', " ").split(" ")
-    # print(data)
-    data = [item for item in data if item != ""]
-    # data = [item[1:-1] for item in data ]
-    # print(data[3][0:1])
-    print(stack.testTag(data))
-# testHtml()
-
-
+# 7. Implement “Forward” and “Back” buttons of browser using Stacks. Elements need to be stored are URLs.
 def test_Forwardand_Back():
     stack = ForwardBack()
     assert stack.CurrentDir() == "c:Home"
@@ -124,9 +126,11 @@ def test_Forwardand_Back():
     assert stack.CurrentDir() == "c:Home"
     stack.GoBack()
     assert stack.CurrentDir() == "c:Home"
-# test_Forwardand_Back()
+test_Forwardand_Back()
 
+
+# 8. Modify Q5 such that HTML tags may contain attributes along with tag name.
 def test_att():
     stack = HtmlTagsWithAttributes()
-    print(stack.push(Attributes))
+    assert stack.push(Attributes) == True #returns true if all the html tags are closed correcty
 test_att()

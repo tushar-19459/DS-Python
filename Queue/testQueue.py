@@ -1,5 +1,5 @@
 from simpleQueue import FixedQueue,FlexyQueue ,SimpleQueue ,SatckUsingQueue,Rotate,QueueUsingStack
-#1
+#1 Implement “Simple Queue” using list data structure.
 def testsimpleQueue():
     queue = SimpleQueue()
     assert queue.isEmpty() == True
@@ -11,7 +11,7 @@ def testsimpleQueue():
     assert queue.dequeue() == []
 # testsimpleQueue()
 
-#2
+#2 Modify Q1 such that Simple Queue can contain limited amount of elements.
 def testFixedQueue():
     queue = FixedQueue(5)
     assert queue.enqueue(1)== [1,None,None,None,None]
@@ -28,7 +28,7 @@ def testFixedQueue():
     assert queue.dequeue()== [None,None,None,None,None]
 # testFixedQueue()
 
-#3
+#3 Implement “FlexiQueue” with capacity to expand and shrunk based on elements to be added or deleted.
 def testflexyQueue():
     queue = FlexyQueue()
     assert queue.enqueue(1) == [1, None] 
@@ -56,7 +56,7 @@ def testflexyQueue():
     assert queue.dequeue()  == [None] 
 # testflexyQueue()
 
-#4
+#4 Implement Stack using two Queues
 def testSatckUsingQueue():
     stack = SatckUsingQueue(5)
     assert stack.enqueue(10) == [10,None,None,None,None]
@@ -75,7 +75,23 @@ def testSatckUsingQueue():
     assert stack.enqueue(10) == [10,10,None,None,None]
 # testSatckUsingQueue()
 
-#6
+#5 Implement Queue using two Stacks
+def testqueueUsingStack():
+    stack = QueueUsingStack(5)
+    assert stack.push(10) ==[10, None, None, None, None]
+    stack.push(20) ==[10, 20, None, None, None]
+    stack.push(30) == [10, 20, 30, None, None]
+    stack.push(40) == [10, 20, 30, 40, None]
+    stack.push(50) == [10, 20, 30, 40, 50]
+    assert stack.pop() == 50
+    assert stack.pop() == 40
+    assert stack.dequeue() == [20, 30, None, None, None]
+    assert stack.dequeue() == [30, None,None, None, None]
+    assert stack.pop() == 30
+    assert stack.dequeue() == [None, None,None, None, None]
+# testqueueUsingStack()
+
+#6 Assume that we have Queue with some elements. Write method rotate() which added the existing elements in the reverse order.
 def testrotate():
     queue = Rotate(5)
     assert queue.enqueue(1) == [1,None,None,None,None]
@@ -90,7 +106,7 @@ def testrotate():
     assert queue.dequeue() == [11, None, 3, 4, 5, 5, 4, 3, 2, 1]
 # testrotate()
 
-#7
+#7 Implement findMax() method, which return the maximum value of element present in the queue. After finding maximum element, queue content should be same as original.
 def testMax():
     queue = SimpleQueue()
     queue.enqueue(21)
@@ -103,18 +119,3 @@ def testMax():
     assert queue.findMax() == 40
 # testMax()
 
-def testqueueUsingStack():
-    stack = QueueUsingStack(5)
-    assert stack.push(10) ==[10, None, None, None, None]
-    stack.push(20) ==[10, 20, None, None, None]
-    stack.push(30) == [10, 20, 30, None, None]
-    stack.push(40) == [10, 20, 30, 40, None]
-    stack.push(50) == [10, 20, 30, 40, 50]
-    assert stack.pop() == 50
-    assert stack.pop() == 40
-    assert stack.dequeue() == [20, 30, None, None, None]
-    assert stack.dequeue() == [30, None,None, None, None]
-    assert stack.pop() == 30
-    assert stack.dequeue() == [None, None,None, None, None]
-
-testqueueUsingStack()
