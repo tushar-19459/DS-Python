@@ -33,6 +33,7 @@ class LinkeList:
     def getLL(self):
         if not self.isEmpty():
             temp = self.head
+            print("linkedList : ")
             while temp != None:
                 print(temp.data,end=" ")
                 temp = temp.next
@@ -101,7 +102,6 @@ class LinkeList:
                     self.count+=1
                 else:
                     self.addAtTail(ele)
-                # self.getLL()
                 return
         return -1
 
@@ -168,13 +168,7 @@ class LinkeList:
                 temp = temp.next
         return sum
     
-        # temp = self.getLen()
-        # while temp!=0:
-        #     self.getLL()
-        #     ele = self.deleteAtHead()
-        #     self.addAtTail(ele)
-        #     temp-=1
-        # .getLL()
+        
     
     def splitLL(self):
         tempHead = self.getHead()
@@ -197,12 +191,78 @@ class LinkeList:
         ll2.getLL()
 
     def isPalindrome(self):
-        temp = self.getLen()
-        while not self.isEmpty() :
-            data1 = self.deleteAtHead()
+        while self.getLen()>1 :
             data2 = self.deleteAtTail()
-            print(data1,data2)
-
-            if self.deleteAtHead()!=self.deleteAtTail():
+            data1 = self.deleteAtHead()
+            if data1!=data2:
                 return False
         return True
+    
+    def reverseLL(self):
+        tempData = []
+        if not self.isEmpty():
+            temp = self.head
+            while temp != None:
+                tempData.append(temp.data)
+                temp = temp.next
+        print(tempData)
+        rLinked = LinkeList()
+        for i in tempData[::-1]:
+            rLinked.addAtTail(i)
+        rLinked.getLL()
+
+    def removeDublicates(self):
+        i = self.getHead()
+        while i !=None:
+            j = i.next
+            while j != None:
+                if i!=j and i.data==j.data:
+                    self.DeleteAfterEle(pre)
+                pre = i.data
+                j = j.next
+            i= i.next
+    
+    def getMid(self):
+        mid = int(self.getLen()/2)
+        for i in range(mid):
+            self.deleteAtHead()
+        return self.deleteAtHead()
+    
+    def removeOddFromCircular(self):
+        if self.head is None:
+            return
+        
+        while self.head and self.head.data % 2 != 0:
+            if self.head == self.tail:  
+                self.head = None
+                self.tail = None
+                self.count = 0
+                return
+            self.head = self.head.next
+            self.tail.next = self.head
+            self.count -= 1
+
+        curr = self.head
+        while curr.next != self.head:
+            if curr.next.data % 2 != 0:
+                if curr.next == self.tail:  
+                    self.tail = curr
+                curr.next = curr.next.next
+                self.count -= 1
+            else:
+                curr = curr.next
+
+
+    def displayCircular(self):
+        if self.head is None:
+            print("List is empty")
+            return
+        
+        temp = self.head
+        print("Circular Linked List:", end=" ")
+        while True:
+            print(temp.data, end=" ")
+            temp = temp.next
+            if temp == self.head:  
+                break
+        print()
