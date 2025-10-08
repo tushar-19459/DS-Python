@@ -63,8 +63,8 @@ class SortMethords:
 
         return high
  
-
     def merge_sort(self,arr):
+
         if len(arr) <= 1:
             return arr
 
@@ -74,8 +74,8 @@ class SortMethords:
 
         return self.merge(left, right)
 
-
     def merge(self, left, right):
+        
         result = []
         i = j = 0
 
@@ -90,7 +90,6 @@ class SortMethords:
         result.extend(left[i:])
         result.extend(right[j:])
         return result
-
 
     def heapify(self, n, i):
         largest = i
