@@ -247,7 +247,7 @@ class treeTesting:
             node.left =  self._insert(node.left,ele)
         if node.data<ele:
             node.right =  self._insert(node.right,ele)
-        return node
+        
         
     def inorder(self):
         self._inorder(self.root)
