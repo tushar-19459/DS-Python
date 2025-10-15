@@ -75,11 +75,28 @@ class SimpleTree:
     def deleteNode(self,key):
         if not self.isEmpty():
             self.root = self._deleteNode_(self.root,key)
-
+    
     def _deleteNode_(self,node,key):
-        if node == None:
+        if node is None:
             return None
-        elif key<node.ele:
+    
+        if node.ele>key:
             node.left = self._deleteNode_(node.left,key)
-        elif key>node.ele
-            node.left = self._deleteNode_(node.left,key)
+        elif node.ele<key:
+            node.right = self._deleteNode_(node.right,key)
+        else:
+            if node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+            else:
+                succ = self.getMin(node.right)
+                node.ele = succ.ele
+                node.right = self._deleteNode_(node.right,succ.ele)
+        return node
+
+    def getMin(self,node):
+        current = node
+        while current.left is not None:
+            current = current.left 
+        return current

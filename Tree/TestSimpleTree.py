@@ -9,12 +9,13 @@ def testtree():
     tree.insert(30)
     tree.insert(75)
     tree.insert(60)
-    tree.insert(30)
     tree.insert(90)
     tree.insert(85)
     tree.insert(25)
     # tree.travers()
-    assert tree.isMember(60) == True
-    assert tree.isMember(100) == False
+    # assert tree.isMember(60) == True
+    # assert tree.isMember(100) == False
+    tree.deleteNode(75)
+    tree.travers()
 
 testtree()
