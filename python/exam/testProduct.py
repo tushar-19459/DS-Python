@@ -9,6 +9,5 @@ class test:
     product.place_order(3,3,'raj',90)
     print(product.get_top_selling_product())
     print(product.count_unique_products())
-    # print(product.topselling[1])
 
 test()
