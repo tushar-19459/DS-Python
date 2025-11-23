@@ -76,3 +76,44 @@ class Graph:
 
         dfs(from_N)
         return path
+
+    def test_bfs(self,start,end):
+        queue = []
+
+        def enqueu(ele):
+            queue.append(ele)
+
+        def dequeue(ele):
+            queue = queue[1:]
+
+        def bfs(start):
+            pass
+        
+
+    def bfs(self,start,end):
+        if not self._is_node_(start) or not self._is_node_(end):
+            return None
+        parent = {start:None}
+        queue = [start]
+        visited = set([start])
+        while len(queue)>0:
+            current = queue.pop(0)
+            if current==end:
+                break
+
+            for i in self.get_neighbors(current):
+                if not i in visited:
+                    visited.add(i)
+                    queue.append(i)
+                    parent[i] = current 
+        
+        if not end in parent.keys():
+            return None
+
+        node = end
+        path = []
+        while node!=None:
+            path.append(node)
+            node = parent[node]
+        return path
+
