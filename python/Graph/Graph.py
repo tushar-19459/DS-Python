@@ -48,33 +48,31 @@ class Graph:
         return self.count
     
     def get_neighbors(self,id):
-        self.all_node[id]._get_neighnor_list()
+        return self.all_node[id]._get_neighnor_list()
     
     def get_edgeCost(self,from_node,to_node):
         return self.all_node[from_node]._edge_cost(to_node)
 
-    def DFS(self,from_node,to_node):
-        if not self._is_node_(from_node) and not self._is_node_(to_node):
-            return 
+    def test_dfs(self,from_N,to_N):
+        if not self._is_node_(from_N) or not self._is_node_(to_N):
+            return None
         
-        visted = set()
+        vissited = set()
         path = []
 
-        def _dfs_(current):
-            visted.add(current)
+        def dfs(current):
+            vissited.add(current)
             path.append(current)
 
-            if current == to_node:
+            if current == to_N:
                 return True
             
-
-            for node in self.all_node[current].neighor.keys():
-                if not node in visted:
-                    if _dfs_(node):
+            for i in self.get_neighbors(current):
+                if not i in vissited:
+                    if dfs(i):
                         return True
-            
-            path.pop()
+            path.pop()#if lead to dead end 
             return False
-        
-        found = _dfs_(from_node)
-        return path if found else None
+
+        dfs(from_N)
+        return path

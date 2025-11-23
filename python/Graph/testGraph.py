@@ -13,6 +13,6 @@ def testing():
     gp.insert_edge('c','d',5)
     gp.insert_edge('d','e',15)
 
-    print(gp.DFS('a','e'))
+    print(gp.test_dfs('a','e'))
 
 testing()
