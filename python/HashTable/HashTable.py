@@ -17,7 +17,7 @@ class HashTable:
         code = 0
         data = str(id)
         for i in data:
-            code = i<<5
+            code = code<<5
             code = code+ord(i)
         return code
 
